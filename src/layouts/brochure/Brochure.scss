@@ -1,0 +1,11 @@
+.layout {
+  display: flex;
+  color: white;
+  height: 100%;
+
+  .sidebar {
+    flex: 0 0 15%;
+    background-color: gainsboro;
+  }
+}
+

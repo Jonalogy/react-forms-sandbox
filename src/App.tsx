@@ -1,24 +1,14 @@
 import React from 'react';
-import logo from './logo.svg';
+import { Brochure } from 'layouts/brochure/Brochure';
+import { ReactHookForm } from 'views/reactHookForm/ReachHookForm';
 import './App.css';
 
-function App() {
+function App(): React.FC<{}> {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Brochure>
+        <ReactHookForm />
+      </Brochure>
     </div>
   );
 }
