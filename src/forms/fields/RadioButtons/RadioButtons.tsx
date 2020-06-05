@@ -5,7 +5,6 @@ interface IRadioButtons {
     fieldName: string;
     options: TRadioOptions[];
     register: (ref: Element | null) => void;
-    // onRadioChange?: (i?: any) => any | void
 }
 const RadioButtons: React.FC<IRadioButtons> = (props) => {
     return (
@@ -19,7 +18,6 @@ const RadioButtons: React.FC<IRadioButtons> = (props) => {
                             name={props.fieldName}
                             ref={props.register}
                             value={o.value}
-                            defaultChecked={o.defaultChecked}
                         />
                         {o.label}
                     </label>
