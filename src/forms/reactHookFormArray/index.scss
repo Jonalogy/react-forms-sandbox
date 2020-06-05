@@ -1,0 +1,25 @@
+.frame {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.form {
+  background-color: lightgray;
+  min-height: 400px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.formData {
+  background-color: lightcyan;
+  color: black;
+}
+
+.radioGroup {
+  
+}
