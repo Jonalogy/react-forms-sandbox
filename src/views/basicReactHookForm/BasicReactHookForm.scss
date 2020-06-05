@@ -1,5 +1,6 @@
 .frame {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100%;
@@ -17,4 +18,9 @@
 .errorMsg {
   background-color: whitesmoke;
   color: red;
+}
+
+.formData {
+  background-color: lightcyan;
+  color: black;
 }
