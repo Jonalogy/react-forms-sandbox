@@ -1,16 +1,16 @@
 import React from 'react';
-import { Brochure } from 'layouts/brochure/Brochure';
-import { ReactHookForm } from 'views/reactHookForm/ReachHookForm';
+import { ReactHookForm } from 'views/reactHookForm/ReactHookForm';
 import './App.css';
+// import { Brochure } from 'layouts/brochure/Brochure';
 
 function App() {
-  return (
-    <div className="App">
-      <Brochure>
-        <ReactHookForm />
-      </Brochure>
-    </div>
-  );
+    console.log('App...');
+    return (
+        <div className="App">
+            <ReactHookForm />
+            {/* <Brochure></Brochure> */}
+        </div>
+    );
 }
 
 export default App;
