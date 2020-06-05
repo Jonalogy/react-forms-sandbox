@@ -1,17 +1,11 @@
 import React from 'react';
-import { FormContextValues } from 'react-hook-form';
-import { register } from 'serviceWorker';
-
-type TRadioOptions = {
-    value: string | number;
-    label: string;
-};
+import { TRadioOptions } from 'forms/fields/RadioButtons/types';
 
 interface IRadioButtons {
     fieldName: string;
     options: TRadioOptions[];
     register: (ref: Element | null) => void;
-    options: TRadioOptions[];
+    // onRadioChange?: (i?: any) => any | void
 }
 const RadioButtons: React.FC<IRadioButtons> = (props) => {
     return (
@@ -25,6 +19,7 @@ const RadioButtons: React.FC<IRadioButtons> = (props) => {
                             name={props.fieldName}
                             ref={props.register}
                             value={o.value}
+                            defaultChecked={o.defaultChecked}
                         />
                         {o.label}
                     </label>
