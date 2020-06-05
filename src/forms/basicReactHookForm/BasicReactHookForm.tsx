@@ -1,7 +1,7 @@
 import React from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import './BasicReactHookForm.scss';
-import TextArea from 'views/basicReactHookForm/controlledFields/TextArea';
+import TextArea from 'forms/basicReactHookForm/controlledFields/TextArea';
 
 enum Fields {
     name = 'Name',
