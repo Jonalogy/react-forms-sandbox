@@ -1,7 +1,8 @@
 import React from 'react';
 import './Brochure.scss';
 
-export const Brochure: React.FC<{}> = (props) => {
+type IBrochure = Record<string, any>;
+export const Brochure: React.FC<IBrochure> = (props) => {
     return (
         <div className={'layout'}>
             <div className={'sidebar'}>sidebar</div>
