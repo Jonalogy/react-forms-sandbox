@@ -14,10 +14,10 @@ const ReactHookFormArray: React.FC<IReactHookFormArray> = () => {
         defaultValues: {
             form: [
                 {
-                    premise: { premiseType: 'prod', workFrom: 'onSite', numberOfWorkers: '' },
-                },
-            ],
-        },
+                    premise: { premiseType: 'prod', workFrom: 'onSite', numberOfWorkers: '' }
+                }
+            ]
+        }
     });
 
     const { fields, append, remove } = useFieldArray({ control, name: 'form' });
@@ -46,7 +46,8 @@ const ReactHookFormArray: React.FC<IReactHookFormArray> = () => {
                         type="button"
                         onClick={() => {
                             append({
-                                premise: { premiseType: 'prod', workFrom: 'onSite', numberOfWorkers: '' },
+                                // TODO: Defaulting values are not working
+                                premise: { premiseType: 'prod', workFrom: 'onSite', numberOfWorkers: '' }
                             });
                         }}
                     >
