@@ -1,12 +1,16 @@
-import { Fields } from 'forms/reactHookFormArray/constants';
+import { Fields, Section } from 'forms/reactHookFormArray/constants';
 
-export type ManpowerPremise = {
+export type TManpowerPremise = {
     premise: {
-        [Fields.hours]: string;
         [Fields.workFrom]: string;
         [Fields.premiseType]: string;
         [Fields.numberOfWorkers]: string;
     };
 };
 
-export type FieldNames = ManpowerPremise[];
+type TWorkerName = {
+    firstName: string;
+    lastName: string;
+};
+
+export type FieldNames = TManpowerPremise & { [Fields.workerName]: TWorkerName[] };

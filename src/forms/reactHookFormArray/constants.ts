@@ -9,11 +9,16 @@ const productionSiteOptions: TRadioOptions[] = [
     { label: 'Non-production site (eg. back office)', value: 'nonProd' },
 ];
 
+enum Section {
+    premise = 'premise',
+    worker = 'worker',
+}
+
 enum Fields {
     workFrom = 'workFrom',
     premiseType = 'premiseType',
     numberOfWorkers = 'numberOfWorkers',
-    hours = 'hours',
+    workerName = 'workerName',
 }
 
-export { employeesWorkAreaOptions, productionSiteOptions, Fields };
+export { employeesWorkAreaOptions, productionSiteOptions, Fields, Section };
