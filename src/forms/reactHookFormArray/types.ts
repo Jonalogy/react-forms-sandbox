@@ -1,4 +1,4 @@
-import { Fields, Section } from 'forms/reactHookFormArray/constants';
+import { Fields } from 'forms/reactHookFormArray/constants';
 
 export type TManpowerPremise = {
     premise: {
@@ -14,3 +14,13 @@ type TWorkerName = {
 };
 
 export type FieldNames = TManpowerPremise & { [Fields.workerName]: TWorkerName[] };
+
+export type FieldNamesArray = {
+    form: Array<{
+        premise: {
+            [Fields.workFrom]: string;
+            [Fields.premiseType]: string;
+            [Fields.numberOfWorkers]: string;
+        };
+    }>;
+};

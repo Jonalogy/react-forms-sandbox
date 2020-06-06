@@ -1,10 +1,11 @@
 import React from 'react';
-import { BasicReactHookForm } from 'forms/basicReactHookForm/BasicReactHookForm';
-import './App.css';
 import ReactHookFormArray from 'forms/reactHookFormArray';
+// import { BasicReactHookForm } from 'forms/basicReactHookForm/BasicReactHookForm';
 // import { Brochure } from 'layouts/brochure/Brochure';
 
-function App() {
+import './App.css';
+
+function App(): JSX.Element {
     console.log('App...');
     return (
         <div className="App">
