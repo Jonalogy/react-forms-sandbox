@@ -1,41 +1,18 @@
 import React from 'react';
-import { useForm, Controller } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import './index.scss';
 import RadioButtons from 'forms/fields/RadioButtons/RadioButtons';
-import { validate } from '@babel/types';
 import Input from 'forms/fields/Input';
-import { TRadioOptions } from 'forms/fields/RadioButtons/types';
-import { BasicReactHookForm } from 'forms/basicReactHookForm/BasicReactHookForm';
+import { Fields, employeesWorkAreaOptions, productionSiteOptions } from 'forms/reactHookFormArray/constants';
+import { FieldNames } from 'forms/reactHookFormArray/types';
 
-const employeesWorkAreaOptions: TRadioOptions[] = [
-    { label: 'Working on site', value: 'onSite' },
-    { label: 'Working from home / off-site', value: 'offSite' },
-];
-const productionSiteOptions: TRadioOptions[] = [
-    { label: 'Production site (eg. construction site)', value: 'prod' },
-    { label: 'Non-production site (eg. back office)', value: 'nonProd' },
-];
-
-enum Fields {
-    workFrom = 'workFrom',
-    premiseType = 'premiseType',
-    numberOfWorkers = 'numberOfWorkers',
-    hours = 'hours',
-}
-type FieldNames = {
-    premise: {
-        [Fields.hours]: string;
-        [Fields.workFrom]: string;
-        [Fields.premiseType]: string;
-        [Fields.numberOfWorkers]: string;
-    };
-};
-type IReactHookFormArray = Record<string, unknown>;
 let rendered = 0;
+
+type IReactHookFormArray = Record<string, unknown>;
 const ReactHookFormArray: React.FC<IReactHookFormArray> = () => {
     rendered++;
     const { register, getValues, handleSubmit, watch, errors, triggerValidation } = useForm<FieldNames>({
-        defaultValues: { premise: { [Fields.workFrom]: 'onSite' } },
+        defaultValues: [{ premise: { [Fields.workFrom]: 'onSite' } }],
     });
     const onSubmit = (data) => console.log('submitted:', data);
 
