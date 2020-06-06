@@ -2,8 +2,8 @@ import React from 'react';
 import RadioButtons from 'forms/fields/RadioButtons/RadioButtons';
 import { employeesWorkAreaOptions, productionSiteOptions } from 'forms/reactHookFormArray/constants';
 import { get } from 'lodash';
-import './SubForm.scss';
 import Input from 'forms/fields/Input';
+import './SubForm.scss';
 
 interface ISubForm {
     errors: Record<string, unknown>;
@@ -19,8 +19,8 @@ const SubForm: React.FC<ISubForm> = (props) => {
     console.log(get(props.errors, props.numberOfWorkerFieldName, false));
 
     return (
-        <div className="subform">
-            <div>
+        <div className="subFormLayout">
+            <div className="subForm">
                 {/* TODO: Updating radio button is causing form the re-render twice */}
                 <RadioButtons
                     fieldName={props.workFromFieldName}
@@ -38,7 +38,7 @@ const SubForm: React.FC<ISubForm> = (props) => {
                     placeholder="Number of workers"
                     register={props.register({ required: 'Please input a number' })}
                     name={props.numberOfWorkerFieldName}
-                    error={get(props.errors, props.numberOfWorkerFieldName, false) as boolean} // TODO: Error is not working yet!
+                    error={get(props.errors, props.numberOfWorkerFieldName, false) as boolean}
                     onChange={() => props.triggerValidation(props.numberOfWorkerFieldName)}
                 />
             </div>
