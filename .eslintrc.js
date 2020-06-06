@@ -17,6 +17,7 @@ module.exports = {
     "plugin:prettier/recommended" // Enables eslint-plugin-prettier and eslint-config-prettier. This will display prettier errors as ESLint errors. Make sure this is always the last configuration in the extends array.
   ],
   rules: {
+    "comma-dangle": 0,
     "react-hooks/rules-of-hooks": "error", // Checks rules of Hooks
     "react-hooks/exhaustive-deps": "warn", // Checks effect dependencies,
     "react/prop-types": 0 // To drop requirement of prop-types check (https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/prop-types.md)

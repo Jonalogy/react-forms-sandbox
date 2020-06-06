@@ -6,7 +6,7 @@ import TextArea from 'forms/basicReactHookForm/controlledFields/TextArea';
 enum Fields {
     name = 'Name',
     age = 'Age',
-    hobbies = 'Hobbies',
+    hobbies = 'Hobbies'
 }
 
 type Inputs = {
@@ -62,9 +62,8 @@ export function BasicReactHookForm() {
                                 /[^a-zA-Z\s,]/g.test(val)
                                     ? `${Fields.hobbies} cannot contain special characters`
                                     : undefined,
-                            minStrLength: (val) =>
-                                String(val).length < 5 ? 'At least 5 characters please' : undefined,
-                        },
+                            minStrLength: (val) => (String(val).length < 5 ? 'At least 5 characters please' : undefined)
+                        }
                     }}
                     onChange={([event]) => {
                         const hobbies = event.target.value.replace(/\d/g, '');
