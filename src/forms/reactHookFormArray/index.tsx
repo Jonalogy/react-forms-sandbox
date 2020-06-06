@@ -5,6 +5,7 @@ import RadioButtons from 'forms/fields/RadioButtons/RadioButtons';
 import { validate } from '@babel/types';
 import Input from 'forms/fields/Input';
 import { TRadioOptions } from 'forms/fields/RadioButtons/types';
+import { BasicReactHookForm } from 'forms/basicReactHookForm/BasicReactHookForm';
 
 const employeesWorkAreaOptions: TRadioOptions[] = [
     { label: 'Working on site', value: 'onSite' },
@@ -19,19 +20,24 @@ enum Fields {
     workFrom = 'workFrom',
     premiseType = 'premiseType',
     numberOfWorkers = 'numberOfWorkers',
+    basicForm = 'basicForm',
 }
 type FieldNames = {
     [Fields.workFrom]: string;
     [Fields.numberOfWorkers]: string;
+    [Fields.basicForm]: string;
 };
 type IReactHookFormArray = Record<string, unknown>;
+let rendered = 0;
 const ReactHookFormArray: React.FC<IReactHookFormArray> = () => {
+    rendered++
     const { register, getValues, handleSubmit, watch, errors, triggerValidation } = useForm<FieldNames>({
         defaultValues: { [Fields.workFrom]: 'onSite' },
     });
     const onSubmit = (data) => console.log('submitted:', data);
     return (
-        <>
+        <div className="frame">
+            <h5>Render Count: {rendered}</h5>
             <div className="formData">{`${JSON.stringify(getValues(), null, 2)}`}</div>
             <form className="form" onSubmit={handleSubmit(onSubmit)}>
                 {/* TODO: Updating radio button is causing form the re-render twice */}
@@ -51,7 +57,7 @@ const ReactHookFormArray: React.FC<IReactHookFormArray> = () => {
                 )}
                 <button type="submit">Submit</button>
             </form>
-        </>
+        </div>
     );
 };
 
