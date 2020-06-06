@@ -20,41 +20,56 @@ enum Fields {
     workFrom = 'workFrom',
     premiseType = 'premiseType',
     numberOfWorkers = 'numberOfWorkers',
-    basicForm = 'basicForm',
+    hours = 'hours',
 }
 type FieldNames = {
-    [Fields.workFrom]: string;
-    [Fields.numberOfWorkers]: string;
-    [Fields.basicForm]: string;
+    premise: {
+        [Fields.hours]: string;
+        [Fields.workFrom]: string;
+        [Fields.premiseType]: string;
+        [Fields.numberOfWorkers]: string;
+    };
 };
 type IReactHookFormArray = Record<string, unknown>;
 let rendered = 0;
 const ReactHookFormArray: React.FC<IReactHookFormArray> = () => {
-    rendered++
+    rendered++;
     const { register, getValues, handleSubmit, watch, errors, triggerValidation } = useForm<FieldNames>({
-        defaultValues: { [Fields.workFrom]: 'onSite' },
+        defaultValues: { premise: { [Fields.workFrom]: 'onSite' } },
     });
     const onSubmit = (data) => console.log('submitted:', data);
+
     return (
         <div className="frame">
             <h5>Render Count: {rendered}</h5>
-            <div className="formData">{`${JSON.stringify(getValues(), null, 2)}`}</div>
+            <div className="formData">{`${JSON.stringify(getValues({ nest: true }), null, 2)}`}</div>
             <form className="form" onSubmit={handleSubmit(onSubmit)}>
-                {/* TODO: Updating radio button is causing form the re-render twice */}
-                <RadioButtons fieldName={Fields.workFrom} register={register} options={employeesWorkAreaOptions} />
-
-                {watch(Fields.workFrom) === 'onSite' && (
-                    <RadioButtons fieldName={Fields.premiseType} register={register} options={productionSiteOptions} />
-                )}
-
-                {watch(Fields.workFrom) && watch(Fields.premiseType) && (
-                    <Input
-                        register={register({ required: 'This field is required' })}
-                        name={Fields.numberOfWorkers}
-                        error={!!errors[Fields.numberOfWorkers]}
-                        onChange={() => triggerValidation(Fields.numberOfWorkers)}
+                <div>
+                    {/* TODO: Updating radio button is causing form the re-render twice */}
+                    <RadioButtons
+                        fieldName={`premise.${Fields.workFrom}`}
+                        register={register}
+                        options={employeesWorkAreaOptions}
                     />
-                )}
+
+                    {watch(`premise.${Fields.workFrom}`) === 'onSite' && (
+                        <RadioButtons
+                            fieldName={`premise.${Fields.premiseType}`}
+                            register={register}
+                            options={productionSiteOptions}
+                        />
+                    )}
+
+                    {watch(`premise.${Fields.workFrom}`) && watch(`premise.${Fields.premiseType}`) && (
+                        <Input
+                            placeholder="Number of workers"
+                            register={register({ required: 'This field is required' })}
+                            name={Fields.numberOfWorkers}
+                            error={!!errors[Fields.numberOfWorkers]}
+                            onChange={() => triggerValidation(Fields.numberOfWorkers)}
+                        />
+                    )}
+                </div>
                 <button type="submit">Submit</button>
             </form>
         </div>

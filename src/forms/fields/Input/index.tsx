@@ -5,6 +5,7 @@ interface IInput {
     register: unknown;
     error: boolean;
     name: string;
+    placeholder?: string;
     onChange?: (i?: any) => any;
 }
 
@@ -15,6 +16,7 @@ function Input(props: IInput) {
             ref={props.register as RefObject<HTMLInputElement>}
             name={props.name}
             onChange={props.onChange}
+            placeholder={props.placeholder}
         />
     );
 }
