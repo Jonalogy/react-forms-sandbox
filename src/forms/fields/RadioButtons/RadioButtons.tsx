@@ -7,9 +7,21 @@ interface IRadioButtons {
     defaultValue?: string | number;
     register: (ref: Element | null) => void;
 }
+
+const renderCount = {};
+
 const RadioButtons: React.FC<IRadioButtons> = (props) => {
+    if (renderCount[props.fieldName]) {
+        renderCount[props.fieldName]++;
+    } else {
+        renderCount[props.fieldName] = 1;
+    }
+
     return (
         <section className="radioGroup">
+            <h5>
+                {props.fieldName}: {renderCount[props.fieldName]}
+            </h5>
             {props.options.map((o, idx) => {
                 console.log(
                     'defaultChecked',
