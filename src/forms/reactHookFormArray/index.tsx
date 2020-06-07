@@ -10,11 +10,11 @@ let rendered = 0;
 
 type IReactHookFormArray = Record<string, unknown>;
 const ReactHookFormArray: React.FC<IReactHookFormArray> = () => {
-    const { register, getValues, handleSubmit, errors, triggerValidation, control } = useForm<FieldNamesArray>({
+    const { register, getValues, handleSubmit, errors, triggerValidation, control, watch } = useForm<FieldNamesArray>({
         defaultValues: {
             form: [
                 {
-                    premise: { premiseType: 'prod', workFrom: 'onSite', numberOfWorkers: '' }
+                    premise: {}
                 }
             ]
         }
@@ -28,18 +28,23 @@ const ReactHookFormArray: React.FC<IReactHookFormArray> = () => {
             <h5>Render Count: {rendered++ && rendered}</h5>
             <div className="formData">{`${JSON.stringify(getValues({ nest: true }), null, 2)}`}</div>
             <form className="form" onSubmit={handleSubmit((data) => console.log('submitted:', data))}>
-                {fields.map((field, idx) => (
-                    <SubForm
-                        key={field.id}
-                        register={register}
-                        errors={errors}
-                        workFromFieldName={`form[${idx}].premise.${Fields.workFrom}`}
-                        premiseTypeFieldName={`form[${idx}].premise.${Fields.premiseType}`}
-                        numberOfWorkerFieldName={`form[${idx}].premise.${Fields.numberOfWorkers}`}
-                        triggerValidation={triggerValidation}
-                        removePremise={fields.length > 1 ? () => remove(idx) : undefined}
-                    />
-                ))}
+                {fields.map((field, idx) => {
+                    console.log({ field });
+                    return (
+                        <SubForm
+                            key={field.id}
+                            register={register}
+                            triggerValidation={triggerValidation}
+                            watch={watch}
+                            errors={errors}
+                            field={field.premise}
+                            workFromFieldName={`form[${idx}].premise.${Fields.workFrom}`}
+                            premiseTypeFieldName={`form[${idx}].premise.${Fields.premiseType}`}
+                            numberOfWorkerFieldName={`form[${idx}].premise.${Fields.numberOfWorkers}`}
+                            removePremise={fields.length > 1 ? () => remove(idx) : undefined}
+                        />
+                    );
+                })}
 
                 <div className="formArrayActions">
                     <button
@@ -47,7 +52,7 @@ const ReactHookFormArray: React.FC<IReactHookFormArray> = () => {
                         onClick={() => {
                             append({
                                 // TODO: Defaulting values are not working
-                                premise: { premiseType: 'prod', workFrom: 'onSite', numberOfWorkers: '' }
+                                premise: {}
                             });
                         }}
                     >

@@ -16,11 +16,7 @@ type TWorkerName = {
 export type FieldNames = TManpowerPremise & { [Fields.workerName]: TWorkerName[] };
 
 export type FieldNamesArray = {
-    form: Array<{
-        premise: {
-            [Fields.workFrom]: string;
-            [Fields.premiseType]: string;
-            [Fields.numberOfWorkers]: string;
-        };
-    }>;
+    form: TManpowerPremise[];
 };
+
+export type AnyReactFormHooks = any;

@@ -6,6 +6,7 @@ interface IInput {
     error: boolean;
     name: string;
     placeholder?: string;
+    disabled?: boolean;
     onChange?: (i?: any) => any;
 }
 
@@ -17,6 +18,7 @@ function Input(props: IInput) {
             name={props.name}
             onChange={props.onChange}
             placeholder={props.placeholder}
+            disabled={props.disabled}
         />
     );
 }

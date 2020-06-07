@@ -4,20 +4,21 @@ import { employeesWorkAreaOptions, productionSiteOptions } from 'forms/reactHook
 import { get } from 'lodash';
 import Input from 'forms/fields/Input';
 import './SubForm.scss';
+import { TManpowerPremise, AnyReactFormHooks } from 'forms/reactHookFormArray/types';
 
 interface ISubForm {
     errors: Record<string, unknown>;
     workFromFieldName: string;
     premiseTypeFieldName: string;
     numberOfWorkerFieldName: string;
-    register: any;
-    triggerValidation: any;
-    removePremise: any;
+    field: TManpowerPremise;
+    register: AnyReactFormHooks;
+    triggerValidation: AnyReactFormHooks;
+    removePremise: AnyReactFormHooks;
+    watch: AnyReactFormHooks;
 }
 
 const SubForm: React.FC<ISubForm> = (props) => {
-    console.log(get(props.errors, props.numberOfWorkerFieldName, false));
-
     return (
         <div className="subFormLayout">
             <div className="subForm">
@@ -26,18 +27,21 @@ const SubForm: React.FC<ISubForm> = (props) => {
                     fieldName={props.workFromFieldName}
                     register={props.register}
                     options={employeesWorkAreaOptions}
+                    defaultValue={employeesWorkAreaOptions[0].value as string}
                 />
 
                 <RadioButtons
                     fieldName={props.premiseTypeFieldName}
                     register={props.register}
                     options={productionSiteOptions}
+                    defaultValue={productionSiteOptions[0].value as string}
                 />
 
                 <Input
-                    placeholder="Number of workers"
+                    placeholder="Number of on-site workers"
                     register={props.register({ required: 'Please input a number' })}
                     name={props.numberOfWorkerFieldName}
+                    disabled={!(props.watch(props.premiseTypeFieldName) === productionSiteOptions[0].value)}
                     error={get(props.errors, props.numberOfWorkerFieldName, false) as boolean}
                     onChange={() => props.triggerValidation(props.numberOfWorkerFieldName)}
                 />
