@@ -23,11 +23,6 @@ const RadioButtons: React.FC<IRadioButtons> = (props) => {
                 {props.fieldName}: {renderCount[props.fieldName]}
             </h5>
             {props.options.map((o, idx) => {
-                console.log(
-                    'defaultChecked',
-                    props.defaultValue,
-                    props.options.some(({ value }) => value === props.defaultValue)
-                );
                 return (
                     <React.Fragment key={`${props.fieldName}_${idx}`}>
                         <label htmlFor={`${props.fieldName}_${idx}`}>
