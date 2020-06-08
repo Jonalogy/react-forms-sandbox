@@ -9,8 +9,8 @@ function App(): JSX.Element {
     console.log('App...');
     return (
         <div className="App">
-            {/* <BasicReactHookForm /> */}
             <ReactHookFormArray />
+            {/* <BasicReactHookForm /> */}
             {/* <Brochure></Brochure> */}
         </div>
     );
