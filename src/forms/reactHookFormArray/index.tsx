@@ -33,7 +33,6 @@ const ReactHookFormArray: React.FC<IReactHookFormArray> = () => {
 
             <form className="form" onSubmit={handleSubmit((data) => console.log('submitted:', data))}>
                 {fields.map((field, idx) => {
-                    console.log({ field });
                     return (
                         <SubForm
                             key={field.id}
