@@ -18,7 +18,8 @@ enum Fields {
     workFrom = 'workFrom',
     premiseType = 'premiseType',
     numberOfWorkers = 'numberOfWorkers',
-    workerName = 'workerName'
+    workerName = 'workerName',
+    workerIdenfiers = 'workerIdenfiersFieldName'
 }
 
 export { employeesWorkAreaOptions, productionSiteOptions, Fields, Section };

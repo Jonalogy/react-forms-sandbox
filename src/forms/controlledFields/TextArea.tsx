@@ -2,7 +2,7 @@ import React from 'react';
 import './TextArea.scss';
 
 interface ITextArea {
-    onTextChange?: () => void;
+    onTextAreaChange?: () => void;
     value?: string;
     label?: string;
     defaultText?: string;
@@ -16,7 +16,7 @@ const TextArea: React.FC<ITextArea> = (props) => {
             <textarea
                 value={props.value}
                 placeholder={props.placeholder}
-                onChange={props.onTextChange}
+                onChange={props.onTextAreaChange}
                 /* A controlled component simply means:
                     - it takes the value passed from react
                     - accepts a callback (e.g. onChange) to handle the value 

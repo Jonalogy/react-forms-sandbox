@@ -5,6 +5,7 @@ export type TManpowerPremise = {
         [Fields.workFrom]: string;
         [Fields.premiseType]: string;
         [Fields.numberOfWorkers]: string;
+        [Fields.workerIdenfiers]: string;
     };
 };
 

@@ -54,7 +54,7 @@ export function BasicReactHookForm() {
                     label={'Hobbies'}
                     control={control}
                     placeholder="eg. Football"
-                    onChangeName="onTextChange"
+                    onChangeName="onTextAreaChange"
                     rules={{
                         required: `Please list your ${Fields.hobbies}`,
                         validate: {

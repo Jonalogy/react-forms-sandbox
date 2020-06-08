@@ -12,6 +12,7 @@ interface ISubForm {
     workFromFieldName: string;
     premiseTypeFieldName: string;
     numberOfWorkerFieldName: string;
+    workerIdenfiersFieldName: string;
     field: TManpowerPremise;
     register: AnyReactFormHooks;
     triggerValidation: AnyReactFormHooks;
@@ -45,9 +46,9 @@ const SubForm: React.FC<ISubForm> = (props) => {
                     maxLength={5}
                     disabled={!(props.watch(props.premiseTypeFieldName) === productionSiteOptions[0].value)}
                     error={get(props.errors, props.numberOfWorkerFieldName, false) as boolean}
-                    onChange={() => props.triggerValidation(props.numberOfWorkerFieldName)}
                 />
-                <IdentityTextArea />
+
+                <IdentityTextArea name={props.workerIdenfiersFieldName} />
             </div>
             {props.removePremise && (
                 <button className="removePremise" onClick={props.removePremise}>
