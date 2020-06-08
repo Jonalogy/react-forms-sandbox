@@ -1,9 +1,10 @@
 import React from 'react';
-import { useForm, useFieldArray, FormContext } from 'react-hook-form';
 import './index.scss';
+import { useForm, useFieldArray, FormContext } from 'react-hook-form';
 import { Fields } from 'forms/reactHookFormArray/constants';
 import { FieldNamesArray } from 'forms/reactHookFormArray/types';
 import SubForm from 'forms/reactHookFormArray/SubForm';
+import value from 'lodash/value';
 // For debugging purposes
 import Markdown from 'react-markdown';
 import { DevTool } from 'react-hook-form-devtools';
@@ -26,12 +27,13 @@ const ReactHookFormArray: React.FC<IReactHookFormArray> = () => {
     const { register, getValues, handleSubmit, errors, triggerValidation, control, watch } = useFormMethods;
 
     const { fields, append, remove } = useFieldArray({ control, name: 'form' });
-
+    const hasErrors = Object.entries(errors).length > 0;
     return (
         <div className="frame">
             <DevTool control={control} />
             <Markdown className="markdown" source={jsonSource(getValues({ nest: true }))} />
-            <h5>Render Count: {rendered++ && rendered}</h5>
+            <h5 className="status">Render Count: {rendered++ && rendered}</h5>
+            <h5 className={`status${hasErrors ? ' redtext' : ''}`}>{hasErrors ? 'Has' : 'No'} Errors</h5>
 
             <FormContext {...useFormMethods}>
                 <form className="form" onSubmit={handleSubmit((data) => console.log('submitted:', data))}>
