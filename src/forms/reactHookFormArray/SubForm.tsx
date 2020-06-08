@@ -41,7 +41,12 @@ const SubForm: React.FC<ISubForm> = (props) => {
 
                 <Input
                     placeholder="Number of on-site workers"
-                    register={props.register({ required: 'Please input a number' })}
+                    register={props.register({
+                        required: 'Please input a number',
+                        validate: {
+                            onlyChar: (val) => (/^[0-9]+$/.test(val) ? undefined : 'Numbers only!')
+                        }
+                    })}
                     name={props.numberOfWorkerFieldName}
                     maxLength={5}
                     disabled={!(props.watch(props.premiseTypeFieldName) === productionSiteOptions[0].value)}
