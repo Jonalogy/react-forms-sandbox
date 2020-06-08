@@ -5,6 +5,7 @@ import { get } from 'lodash';
 import Input from 'forms/fields/Input';
 import './SubForm.scss';
 import { TManpowerPremise, AnyReactFormHooks } from 'forms/reactHookFormArray/types';
+import IdentityTextArea from 'forms/reactHookFormArray/fields/IdentityTextArea';
 
 interface ISubForm {
     errors: Record<string, unknown>;
@@ -46,6 +47,7 @@ const SubForm: React.FC<ISubForm> = (props) => {
                     error={get(props.errors, props.numberOfWorkerFieldName, false) as boolean}
                     onChange={() => props.triggerValidation(props.numberOfWorkerFieldName)}
                 />
+                <IdentityTextArea />
             </div>
             {props.removePremise && (
                 <button className="removePremise" onClick={props.removePremise}>
