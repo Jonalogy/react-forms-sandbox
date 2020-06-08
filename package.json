@@ -50,6 +50,7 @@
     "eslint-plugin-react": "^7.20.0",
     "eslint-plugin-react-hooks": "^4.0.4",
     "prettier": "2.0.5",
-    "react-hook-form-devtools": "^1.2.0"
+    "react-hook-form-devtools": "^1.2.0",
+    "react-markdown": "^4.3.1"
   }
 }

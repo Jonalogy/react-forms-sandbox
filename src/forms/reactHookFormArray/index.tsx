@@ -4,7 +4,10 @@ import './index.scss';
 import { Fields } from 'forms/reactHookFormArray/constants';
 import { FieldNamesArray } from 'forms/reactHookFormArray/types';
 import SubForm from 'forms/reactHookFormArray/SubForm';
+// For debugging purposes
+import Markdown from 'react-markdown';
 import { DevTool } from 'react-hook-form-devtools';
+import { jsonSource } from 'forms/markdownHelper';
 
 let rendered = 0;
 
@@ -25,8 +28,9 @@ const ReactHookFormArray: React.FC<IReactHookFormArray> = () => {
     return (
         <div className="frame">
             <DevTool control={control} />
+            <Markdown className="markdown" source={jsonSource(getValues({ nest: true }))} />
             <h5>Render Count: {rendered++ && rendered}</h5>
-            <div className="formData">{`${JSON.stringify(getValues({ nest: true }), null, 2)}`}</div>
+
             <form className="form" onSubmit={handleSubmit((data) => console.log('submitted:', data))}>
                 {fields.map((field, idx) => {
                     console.log({ field });
