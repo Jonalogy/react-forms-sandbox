@@ -5,12 +5,13 @@ interface IInput {
     register: unknown;
     error: boolean;
     name: string;
+    maxLength?: number;
     placeholder?: string;
     disabled?: boolean;
     onChange?: (i?: any) => any;
 }
 
-function Input(props: IInput) {
+const Input: React.FC<IInput> = (props) => {
     return (
         <input
             className={className('input', props.error ? 'error' : undefined)}
@@ -18,10 +19,11 @@ function Input(props: IInput) {
             name={props.name}
             onChange={props.onChange}
             placeholder={props.placeholder}
+            maxLength={props.maxLength}
             disabled={props.disabled}
         />
     );
-}
+};
 
 export default Input;
 
